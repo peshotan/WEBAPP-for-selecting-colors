@@ -9,7 +9,7 @@ class Pallete extends Component {
     constructor(props){
         super(props);
         this.state = {
-            level : 100
+            level : 500
         }
 
         this.handleSlider = this.handleSlider.bind(this)
@@ -35,7 +35,10 @@ class Pallete extends Component {
 
         return (
             <div className={'pallete'}>
-                <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.handleSlider}/>
+                <div className={'pallete__slider'}>
+                    <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.handleSlider}/>
+                </div>
+
                 {/*Navbar goes here*/}
                 <div className={'pallete__colors'}>
                     {colorBoxes}
