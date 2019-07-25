@@ -41,7 +41,7 @@ let generateNewPallete = (oldPalette) => {
                 {
                     name: `${color.name}-${levels[i]}`,
                     id : `${color.name.toLowerCase().replace(/ /g, "-")}`,
-                    hex : chroma(scale[i]).css(),
+                    hex : scale[i],
                     gb : chroma(scale[i]).css(),
                     rgba :  chroma(scale[i]).css().replace(")", ",1.0)")
                 }
@@ -54,8 +54,10 @@ let generateNewPallete = (oldPalette) => {
 };
 
 
-let getRange = (hexColor) => [chroma(hexColor).darken(1.7), hexColor, "fff"]
+// getScale uses getRange
+let getScale = (hexColor, numberOfColors) => chroma.scale(getRange(hexColor)).mode("lab").colors(numberOfColors);
 
-let getScale = (hexColor, numberOfColors) => chroma.scale(getRange(hexColor)).mode("lab").colors(numberOfColors)
+// getRange outputs an array with 3 values, start, middle, end
+let getRange = (hexColor) => [chroma(hexColor).darken(1.7), hexColor, "fff"];
 
 export {generateNewPallete}

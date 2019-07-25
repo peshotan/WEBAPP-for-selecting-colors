@@ -10,13 +10,17 @@ class App extends React.Component{
 
   render() {
 
+      // we are using the generateNewPallete function to generate a newPalletes with all the shades from
+      // 50 level to 900;
+      // level 50 will be ignored
+
       console.log(generateNewPallete(SeedColors[4]));
 
       return (
           <div className={"App"}>
 
               <div>
-                  <Pallete {...SeedColors[3]} />
+                  <Pallete pallete={generateNewPallete(SeedColors[4])} />
               </div>
           </div>
       )
