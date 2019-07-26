@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import ColorBox from './ColorBox';
-import Slider, { Range } from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import Navbar from './Navbar';
+
 import './Pallete.css'
 
 class Pallete extends Component {
@@ -9,9 +9,9 @@ class Pallete extends Component {
     constructor(props){
         super(props);
         this.state = {
-            level : 500
-        }
-
+            level : 500,
+            format : "hex"
+        };
         this.handleSlider = this.handleSlider.bind(this)
     }
 
@@ -22,28 +22,38 @@ class Pallete extends Component {
 
     }
 
+    formatHandler = (format) => {
+        this.setState({format : format})
+    };
+
 
     render(){
+
         let {level} = this.state;
-        let {colors} = this.props.pallete
+        let {colors, paletteName, emoji} = this.props.pallete;
 
+        // LOOPING THROUGH COLORS LEVEL ARRAY. eg: color[300] array
+        // here the variable
         let selectedColorArray = colors[level];
-
         const colorBoxes = selectedColorArray.map((color,idx) => (
-            <ColorBox key={idx} name={color.name} color={color.hex}  />
+            <ColorBox key={idx} name={color.name} color={color[this.state.format]}  />
         ));
 
         return (
             <div className={'pallete'}>
-                <div className={'pallete__slider'}>
-                    <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.handleSlider}/>
-                </div>
 
-                {/*Navbar goes here*/}
+                {/*NavBar*/}
+                <Navbar formatHandler={this.formatHandler} slideAction={this.handleSlider} level={level} />
+
+
                 <div className={'pallete__colors'}>
                     {colorBoxes}
                 </div>
                 {/*Footer goes here*/}
+                <footer className={'pallete__footer'}>
+                    {paletteName}
+                    <span className={'pallete__footer__emoji'}> {emoji}</span>
+                </footer>
             </div>
         )
     }

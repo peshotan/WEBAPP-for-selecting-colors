@@ -1,38 +1,23 @@
 .pallete {
     height: 100vh;
+    display:flex;
+    flex-direction: column;
 }
 
 .pallete__colors {
-    height: 90%
+    height: 90%;
 }
 
-.pallete__slider {
-    width: 340px;
-    margin: 0 10px;
-    display: inline-block;
+.pallete__footer {
+    height: 4vh;
+    background-color: #eceff1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: bold;
 }
 
-/*need to add styles to rc track*/
-
-.rc-slider-track {
-    background-color: transparent;
-}
-
-.rc-slider-rail {
-    height: 8px
-}
-
-.rc-slider-handle,
-.rc-slider-handle:active,
-.rc-slider-handle:hover,
-.rc-slider-handle:focus
-{
-    background-color: green;
-    outline: none;
-    border: 2px solid green;
-    box-shadow: none;
-    height: 13px;
-    width: 13px;
-    margin-left: 7px;
-    margin-top: -3px
+.pallete__footer__emoji {
+    margin-right: 1rem;
+    font-size: 1.5rem;
 }
