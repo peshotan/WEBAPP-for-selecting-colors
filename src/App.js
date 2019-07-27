@@ -28,14 +28,12 @@ class App extends React.Component{
       // 50 level to 900;
       // level 50 will be ignored
 
-      console.log(generateNewPallete(SeedColors[4]));
+      console.log("generated Pallete with all levels" , generateNewPallete(SeedColors[4]));
 
       return (
           <div className={"App"}>
-
-
-
               <Switch>
+                  {/* For the HomePage Route we are passing the each individual pallete fromt he SeedColors */}
                   <Route exact path={'/'} render={()=> <PalleteList palletes={SeedColors} />}/>
                   <Route exact path={'/pallete/:id'} render={
                       (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}/>

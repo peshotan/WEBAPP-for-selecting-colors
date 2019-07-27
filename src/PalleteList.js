@@ -1,13 +1,16 @@
 import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
+import MiniPallete from './MiniPallete';
 
 class PalleteList extends Component {
 
     render() {
 
-        let links = this.props.palletes.map(pallete => (
+        let {palletes} = this.props;
+
+        let links = palletes.map(pallete => (
             <p>
-            <Link exact to={`/pallete/${pallete.id}`}> {pallete.id} </Link>
+            <Link exact to={`/pallete/${pallete.id}`}> <MiniPallete {...pallete}/> </Link>
             </p>
         ))
 
