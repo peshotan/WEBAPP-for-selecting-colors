@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f83885e-60f5-4283-9090-82709f0ed209" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/MiniPallete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PalleteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PalleteList.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PalleteList.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PalleteList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PalleteList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+            <state relative-caret-position="337">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="21" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -56,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiniPallete.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MiniPallete.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MiniPallete.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="3" selection-start-column="47" selection-end-line="4" />
               <folding>
                 <element signature="e#59#85#0" expanded="true" />
               </folding>
@@ -95,9 +91,9 @@
         <option value="$PROJECT_DIR$/src/Pallete.css" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/Navbar.js" />
-        <option value="$PROJECT_DIR$/src/PalleteList.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/MiniPallete.js" />
+        <option value="$PROJECT_DIR$/src/PalleteList.js" />
       </list>
     </option>
   </component>
@@ -181,12 +177,12 @@
       <updated>1563923737969</updated>
       <workItem from="1563923740615" duration="16622000" />
       <workItem from="1564085572881" duration="9245000" />
-      <workItem from="1564169888839" duration="9355000" />
+      <workItem from="1564169888839" duration="10649000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35222000" />
+    <option name="totallyTimeSpent" value="36516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -200,7 +196,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2662069" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28275862" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -427,16 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PalleteList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -449,10 +435,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MiniPallete.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="3" selection-start-column="47" selection-end-line="4" />
           <folding>
             <element signature="e#59#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PalleteList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

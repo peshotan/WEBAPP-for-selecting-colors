@@ -33,7 +33,7 @@ class ColorBox extends Component {
         (this.state.isCoping) ? copingOrNot = "colorbox__copy-overlay colorbox__copy-overlay__expanded" : copingOrNot = 'colorbox__copy-overlay';
 
         return(
-            <CopyToClipboard onCopy={this.handleClick} text={name}>
+            <CopyToClipboard onCopy={this.handleClick} text={color}>
                 <div style={{background : color}} className={'colorbox'}>
 
                     <div style={{background : color}} className={copingOrNot}>
