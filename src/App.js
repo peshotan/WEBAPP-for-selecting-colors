@@ -1,12 +1,26 @@
 import React from 'react';
 import SeedColors from './seedColors';
 import Pallete from './Pallete';
-import {generatePallete} from "./colorHelpers";
+import {Route, Switch} from 'react-router-dom';
 import {generateNewPallete} from "./practiceColorHelpers";
+import PalleteList from './PalleteList'
 
 import './App.css';
 
 class App extends React.Component{
+
+   correctGeneratedPallete = (id) => {
+       try {
+           console.log(id);
+           let correctOriginalPallete = SeedColors.find((pallete) => pallete.id === id);
+           return <Pallete pallete={generateNewPallete(correctOriginalPallete)} />;
+       } catch (e) {
+           console.log(e);
+           return <h1>ERROR!</h1>
+       }
+
+   };
+
 
   render() {
 
@@ -19,9 +33,14 @@ class App extends React.Component{
       return (
           <div className={"App"}>
 
-              <div>
-                  <Pallete pallete={generateNewPallete(SeedColors[4])} />
-              </div>
+
+
+              <Switch>
+                  <Route exact path={'/'} render={()=> <PalleteList palletes={SeedColors} />}/>
+                  <Route exact path={'/pallete/:id'} render={
+                      (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}/>
+                  <Route render={()=> <h1>ERROR!</h1>}/>
+              </Switch>
           </div>
       )
   }
