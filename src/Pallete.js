@@ -19,7 +19,6 @@ class Pallete extends Component {
         //value is the value returned from slide Component
         this.setState({level : value},
             ()=> console.log(this.state.level))
-
     }
 
     formatHandler = (format) => {

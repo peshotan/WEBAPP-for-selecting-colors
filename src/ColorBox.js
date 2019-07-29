@@ -36,8 +36,8 @@ class ColorBox extends Component {
             <CopyToClipboard onCopy={this.handleClick} text={color}>
                 <div style={{background : color}} className={'colorbox'}>
 
-                    <div style={{background : color}} className={copingOrNot}>
-                    </div>
+                    {/*The div below is the that expands*/}
+                    <div style={{background : color}} className={copingOrNot}></div>
 
                     <div className={`colorbox__copy-msg ${this.state.isCoping && "show"}`}>
                         <h1>COPIED!</h1>

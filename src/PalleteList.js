@@ -34,11 +34,22 @@ const myStyles = {
         display : "grid",
         gridTemplateColumns : "repeat(3,30%)",
         gridGap : "5%"
+    },
+
+    link : {
+        textDecoration: "none"
     }
 }
 
 
 class PalleteList extends Component {
+
+    // INSTEAD OF USING <Link> component we are just adding a new Route ONTO the history.push method.
+    // This new route will be /pallete/ + the id of the route we want
+    handlePalleteLink = (id) => {
+        this.props.history.push(`/pallete/${id}`)
+    }
+
 
     render() {
         // here the classes property is SET BY withStyles
@@ -46,11 +57,9 @@ class PalleteList extends Component {
         let {palletes, classes} = this.props;
 
         let miniPalletes = palletes.map(pallete => (
-            <p>
-                <Link exact to={`/pallete/${pallete.id}`}>
-                    <MiniPallete {...pallete}/>
-                </Link>
-            </p>
+                <div className={classes.link} >
+                    <MiniPallete handleRoute={()=> this.handlePalleteLink(pallete.id)} {...pallete}/>
+                </div>
         ))
 
         return (
