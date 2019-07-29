@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
-import PalleteFooter from './Footer'
+import PalleteFooter from './Footer';
+import './singleColorPallete.css'
 
 class SinglePallete extends Component {
 
@@ -34,26 +35,31 @@ class SinglePallete extends Component {
 
     render(){
         return(
-            <div className={"pallete"}>
-
-                {/*here we add the header - NAVBAR*/}
-                <Navbar
-                    formatHandler={this.formatHandler}
-                    displaySlider={false} />
+            <div className="single-color-pallete">
 
 
-                <div className={"pallete__colors"}>
-                {this._shades.map((color,idx) => (
-                    <ColorBox key={idx}
-                              name={color.name}
-                              color={color[this.state.format]}
-                              moreURL={`/pallete/${this.props.pallete.id}/${color.id}`}
-                              showMoreURL = {false} />))
-                }
+                <div className={"pallete"}>
+
+                    {/*here we add the header - NAVBAR*/}
+                    <Navbar
+                        formatHandler={this.formatHandler}
+                        displaySlider={false} />
+
+
+                    <div className={"pallete__colors"}>
+                    {this._shades.map((color,idx) => (
+                        <ColorBox key={idx}
+                                  name={color.name}
+                                  color={color[this.state.format]}
+                                  moreURL={`/pallete/${this.props.pallete.id}/${color.id}`}
+                                  showMoreURL = {false} />))
+                    }
+                    </div>
+
+                    {/*Footer goes here*/}
+                    <PalleteFooter paletteName={this.props.pallete.paletteName} emoji={this.props.pallete.emoji} />
                 </div>
 
-                {/*Footer goes here*/}
-                <PalleteFooter paletteName={this.props.pallete.paletteName} emoji={this.props.pallete.emoji} />
             </div>
 
         )
