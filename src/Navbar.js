@@ -38,17 +38,22 @@ class Navbar extends Component {
                 <div className={'navbar__logo'}>
                     <Link exact to={'/'}>reactColorPicker</Link>
                 </div>
-                <div className={'navbar__slider__container'}>
-                    <span>{`Level: ${this.props.level}`}</span>
-                    <div className={'navbar__slider'}>
-                        <Slider
-                            defaultValue={this.props.level}
-                            min={100}
-                            max={900}
-                            step={100}
-                            onAfterChange={this.changeSliderLevel}/>
+
+                {/*// LOGIC TO SHOW SLIDER*/}
+                {
+                    this.props.displaySlider &&
+                    <div className={'navbar__slider__container'}>
+                        <span>{`Level: ${this.props.level}`}</span>
+                        <div className={'navbar__slider'}>
+                            <Slider
+                                defaultValue={this.props.level}
+                                min={100}
+                                max={900}
+                                step={100}
+                                onAfterChange={this.changeSliderLevel}/>
+                        </div>
                     </div>
-                </div>
+                }
 
                 <div className={'navbar__select-container'} >
                     <Select value={this.state.format} onChange={this.handleFormatChange} >

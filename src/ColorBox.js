@@ -52,9 +52,15 @@ class ColorBox extends Component {
                     </div>
                     <button className={"colorbox__copy-button"}>Copy</button>
                     </div>
+
+                    {/*Adding logic to check whether we need to show the more URL*/}
+
+                    {this.props.showMoreURL
+                    &&
                     <Link exact to={this.props.moreURL} onClick={(e)=> e.stopPropagation()}>
-                    <span className={"colorbox__see-more"}>More</span>
-                    </Link>
+                        <span className={"colorbox__see-more"}>More</span>
+                    </Link>}
+
                 </div>
             </CopyToClipboard>
 

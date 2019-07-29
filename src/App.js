@@ -3,7 +3,8 @@ import SeedColors from './seedColors';
 import Pallete from './Pallete';
 import {Route, Switch} from 'react-router-dom';
 import {generateNewPallete} from "./practiceColorHelpers";
-import PalleteList from './PalleteList'
+import PalleteList from './PalleteList';
+import SinglePallete from './SinglePallete';
 
 import './App.css';
 
@@ -19,6 +20,8 @@ class App extends React.Component{
            // this is without the levels
            let correctOriginalPallete = SeedColors.find((pallete) => pallete.id === id);
 
+           console.log("generated Pallete with all levels",generateNewPallete(correctOriginalPallete));
+
            // this is with the levels
            return <Pallete pallete={generateNewPallete(correctOriginalPallete)} />;
        } catch (e) {
@@ -27,6 +30,25 @@ class App extends React.Component{
        }
 
    };
+
+
+   generatePalleteForSinglePallete = (palleteId, renderProps) => {
+
+       try {
+           console.log(palleteId);
+           // this is without the levels
+           let correctOriginalPallete = SeedColors.find((pallete) => pallete.id === palleteId);
+
+
+           // this is with the levels
+           return <SinglePallete pallete={generateNewPallete(correctOriginalPallete)} {...renderProps}/>;
+       } catch (e) {
+           console.log(e);
+           return <h1>ERROR!</h1>
+       }
+
+   }
+
 
 
   render() {
@@ -44,7 +66,13 @@ class App extends React.Component{
                   <Route exact path={'/'} render={(renderProps)=> <PalleteList {...renderProps} palletes={SeedColors} />}/>
                   <Route exact path={'/pallete/:id'} render={
                       (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}/>
-                  <Route exact path={'/pallete/:palleteId/:colorId'} render={()=> <h1>SINGLE COLOR PAGE</h1>}/>
+                  <Route exact
+                         path={'/pallete/:palleteId/:colorId'}
+                         render={
+                             (renderProps)=>
+                                 this.generatePalleteForSinglePallete(renderProps.match.params.palleteId, renderProps)
+                         }
+                  />
                   <Route render={()=> <h1>ERROR!</h1>}/>
               </Switch>
           </div>
