@@ -1,5 +1,6 @@
 import React , {Component} from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {Link} from 'react-router-dom';
 import './ColorBox.css';
 
 
@@ -18,8 +19,8 @@ class ColorBox extends Component {
     // }
 
     handleClick = (e) => {
-        this.setState(
-            {isCoping : true},
+        console.log("HELLO");
+        this.setState({isCoping : true},
             () => setTimeout(()=> {this.setState({isCoping : false})}, 2000)
         )
     }
@@ -51,7 +52,9 @@ class ColorBox extends Component {
                     </div>
                     <button className={"colorbox__copy-button"}>Copy</button>
                     </div>
+                    <Link exact to={this.props.moreURL} onClick={(e)=> e.stopPropagation()}>
                     <span className={"colorbox__see-more"}>More</span>
+                    </Link>
                 </div>
             </CopyToClipboard>
 

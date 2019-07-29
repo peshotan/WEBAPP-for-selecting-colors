@@ -33,7 +33,6 @@ const myStyles = {
         margin: 0,
         color: "black",
         paddingTop : "0.5rem",
-        fontSize : "1rem",
         position : "relative",
         textTransform : "uppercase",
         fontWeight : "100",

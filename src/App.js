@@ -11,6 +11,8 @@ class App extends React.Component{
 
 
    // APP.JS is the parent component of Pallete.JS and PalleteList.JS
+    // the following function returns a ENHANCED Pallete Component(with all levels) with all the necessary props passed in
+
    correctGeneratedPallete = (id) => {
        try {
            console.log(id);
@@ -42,6 +44,7 @@ class App extends React.Component{
                   <Route exact path={'/'} render={(renderProps)=> <PalleteList {...renderProps} palletes={SeedColors} />}/>
                   <Route exact path={'/pallete/:id'} render={
                       (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}/>
+                  <Route exact path={'/pallete/:palleteId/:colorId'} render={()=> <h1>SINGLE COLOR PAGE</h1>}/>
                   <Route render={()=> <h1>ERROR!</h1>}/>
               </Switch>
           </div>

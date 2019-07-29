@@ -33,9 +33,18 @@ class Pallete extends Component {
 
         // LOOPING THROUGH COLORS LEVEL ARRAY. eg: color[300] array
         // here the variable
+
+        // we will also pass the URL for more information on any 1 particular color
+        // we do that by combining the palleteId and colorID as /pallete/:palleteId/:colorId
+        // here the color is the ID of the selected shade of a particular color: is obtained through colors[level].id
+
         let selectedColorArray = colors[level];
         const colorBoxes = selectedColorArray.map((color,idx) => (
-            <ColorBox key={idx} name={color.name} color={color[this.state.format]}  />
+            <ColorBox key={idx}
+                      name={color.name}
+                      color={color[this.state.format]}
+                      moreURL={`/pallete/${this.props.pallete.id}/${color.id}`}
+            />
         ));
 
         return (
