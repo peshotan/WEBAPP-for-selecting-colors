@@ -8,7 +8,7 @@ const myStyles = {
     root : {
         backgroundColor : "#35348f",
         display: "flex",
-        height: "100%",
+        height: "100vh",
         alightItems : "flex-start",
         justifyContent: "center"
     },

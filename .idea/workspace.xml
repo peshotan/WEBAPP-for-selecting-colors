@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f83885e-60f5-4283-9090-82709f0ed209" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ColorBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ColorBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MiniPallete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiniPallete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pallete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pallete.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PalleteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PalleteList.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,10 +16,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="323">
               <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -45,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PalleteList.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PalleteList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PalleteList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="47" column="69" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
+            <state relative-caret-position="226">
+              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -97,8 +92,8 @@
         <option value="$PROJECT_DIR$/src/ColorBox.js" />
         <option value="$PROJECT_DIR$/src/seedColors.js" />
         <option value="$PROJECT_DIR$/src/MiniPallete.js" />
-        <option value="$PROJECT_DIR$/src/PalleteList.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/PalleteList.js" />
       </list>
     </option>
   </component>
@@ -183,18 +178,18 @@
       <workItem from="1563923740615" duration="16622000" />
       <workItem from="1564085572881" duration="9245000" />
       <workItem from="1564169888839" duration="12180000" />
-      <workItem from="1564357767395" duration="2803000" />
+      <workItem from="1564357767395" duration="3025000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40850000" />
+    <option name="totallyTimeSpent" value="41072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49807692" visible="true" weight="0.17474186" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49807692" visible="true" weight="0.17474186" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -202,7 +197,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" sideWeight="0.5019231" side_tool="true" weight="0.17474186" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28275862" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28275862" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="7" />
@@ -480,16 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PalleteList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="47" column="69" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pallete.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-309">
@@ -502,10 +487,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="323">
           <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PalleteList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
