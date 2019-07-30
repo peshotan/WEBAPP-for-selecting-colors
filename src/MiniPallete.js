@@ -60,7 +60,7 @@ const myStyles = {
 function MiniPallete(props){
 
 
-    let {classes, paletteName, id, colors, emoji } = props;
+    let {classes, paletteName, colors, emoji } = props;
     const miniColorBoxes = colors.map((color,idx)=>(
         <div className={classes.miniColor}
              style={{backgroundColor : color.color}}

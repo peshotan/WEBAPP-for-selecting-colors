@@ -30,15 +30,16 @@ class ColorBox extends Component {
         let name = this.props.name;
         let color = this.props.color;
 
-        let copingOrNot = "";
-        (this.state.isCoping) ? copingOrNot = "colorbox__copy-overlay colorbox__copy-overlay__expanded" : copingOrNot = 'colorbox__copy-overlay';
-
         return(
             <CopyToClipboard onCopy={this.handleClick} text={color}>
                 <div style={{background : color}} className={'colorbox'}>
 
-                    {/*The div below is the that expands*/}
-                    <div style={{background : color}} className={copingOrNot}></div>
+                    {/*The div below is the one that EXPANDS */}
+
+                    <div style={{background : color}}
+                         className={
+                             `colorbox__copy-overlay ${this.state.isCoping && "colorbox__copy-overlay__expanded"}`}>
+                    </div>
 
                     <div className={`colorbox__copy-msg ${this.state.isCoping && "show"}`}>
                         <h1>COPIED!</h1>

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
-import PalleteFooter from './Footer';
-import './singleColorPallete.css'
+import { Link } from 'react-router-dom';
+import PalleteFooter from './PalleteFooter';
+import './singleColorPallete.css';
+
 
 class SinglePallete extends Component {
 
@@ -24,6 +26,18 @@ class SinglePallete extends Component {
           let newShade = colors[key].filter(color => color.id === colorId)[0];
           shades.push(newShade)
       }
+
+      // let black = {
+      //     name: null,
+      //     id: "black",
+      //     hex: "#000",
+      //     rgb: "rgb(0,0,0)",
+      //     rgba: "rgba(0,0,0,1)"
+      // };
+      //
+      // shades.push(black)
+
+
       return shades.slice(1)
     };
 
@@ -54,6 +68,13 @@ class SinglePallete extends Component {
                                   moreURL={`/pallete/${this.props.pallete.id}/${color.id}`}
                                   showMoreURL = {false} />))
                     }
+
+                    <div className="go-back colorbox">
+                        <Link exact={true} to={`/pallete/${this.props.pallete.id}`}>
+                        <button className={"go-back-button"}>Copy</button>
+                        </Link>
+                    </div>
+
                     </div>
 
                     {/*Footer goes here*/}

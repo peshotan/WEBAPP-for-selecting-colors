@@ -36,7 +36,7 @@ class Navbar extends Component {
         return(
             <header className={'navbar'}>
                 <div className={'navbar__logo'}>
-                    <Link exact to={'/'}>reactColorPicker</Link>
+                    <Link exact={true} to={'/'}>reactColorPicker</Link>
                 </div>
 
                 {/*// LOGIC TO SHOW SLIDER*/}

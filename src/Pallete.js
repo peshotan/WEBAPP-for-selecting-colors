@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
-import PalleteFooter from './Footer'
+import PalleteFooter from './PalleteFooter'
 
 import './Pallete.css'
 
@@ -66,7 +66,7 @@ class Pallete extends Component {
                     {colorBoxes}
                 </div>
                 {/*Footer goes here*/}
-                <PalleteFooter paletteName={this.props.pallete.paletteName} emoji={this.props.pallete.emoji} />
+                <PalleteFooter paletteName={paletteName} emoji={emoji} />
             </div>
         )
     }
