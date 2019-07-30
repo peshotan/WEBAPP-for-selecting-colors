@@ -67,7 +67,6 @@
 
 .colorbox__copy-msg p {
     font-weight: 100;
-    color: white;
     font-size: 2rem;
 }
 
@@ -128,3 +127,23 @@
     line-height: 30px;
     text-transform: uppercase;
 }
+
+/*.is-dark-background {*/
+    /*color: #eceff1 !important;*/
+/*}*/
+
+/*.colorbox__box-content .is-dark-background {*/
+    /*color: #eceff1;*/
+/*}*/
+
+/*.colorbox__copy-button .is-dark-background {*/
+    /*color: #eceff1;*/
+/*}*/
+
+/*.is-light-background {*/
+    /*color: darkslategrey !important;*/
+/*}*/
+
+/*.colorbox__copy-msg .is-light-background {*/
+    /*color: darkslategrey;*/
+/*}*/

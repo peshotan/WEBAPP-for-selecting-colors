@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
+
 import PalleteFooter from './PalleteFooter';
 import './singleColorPallete.css';
 
@@ -48,6 +49,8 @@ class SinglePallete extends Component {
 
 
     render(){
+
+
         return(
             <div className="single-color-pallete">
 
@@ -66,7 +69,7 @@ class SinglePallete extends Component {
                                   name={color.name}
                                   color={color[this.state.format]}
                                   moreURL={`/pallete/${this.props.pallete.id}/${color.id}`}
-                                  showMoreURL = {false} />))
+                                  showFullPallete = {false} />))
                     }
 
                     <div className="go-back colorbox">

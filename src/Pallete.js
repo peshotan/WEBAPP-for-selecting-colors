@@ -46,7 +46,7 @@ class Pallete extends Component {
                       name={color.name}
                       color={color[this.state.format]}
                       moreURL={`/pallete/${this.props.pallete.id}/${color.id}`}
-                      showMoreURL = {true}
+                      showFullPallete = {true}
             />
         ));
 
