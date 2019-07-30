@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
-
+import { withStyles } from '@material-ui/styles';
+import myStyles from './styles/PalleteStyles';
 import PalleteFooter from './PalleteFooter';
 import './singleColorPallete.css';
+
 
 
 class SinglePallete extends Component {
@@ -50,12 +52,11 @@ class SinglePallete extends Component {
 
     render(){
 
+        let {classes} = this.props;
 
         return(
             <div className="single-color-pallete">
-
-
-                <div className={"pallete"}>
+                <div className={classes.pallete}>
 
                     {/*here we add the header - NAVBAR*/}
                     <Navbar
@@ -63,7 +64,7 @@ class SinglePallete extends Component {
                         displaySlider={false} />
 
 
-                    <div className={"pallete__colors"}>
+                    <div className={classes.palleteColors}>
                     {this._shades.map((color,idx) => (
                         <ColorBox key={idx}
                                   name={color.name}
@@ -72,9 +73,9 @@ class SinglePallete extends Component {
                                   showFullPallete = {false} />))
                     }
 
-                    <div className="go-back colorbox">
+                    <div className={classes.goBackColorbox}>
                         <Link exact={true} to={`/pallete/${this.props.pallete.id}`}>
-                        <button className={"go-back-button"}>Copy</button>
+                        <button className={classes.goBackButton}>Copy</button>
                         </Link>
                     </div>
 
@@ -90,4 +91,4 @@ class SinglePallete extends Component {
     }
 }
 
-export default SinglePallete
+export default withStyles(myStyles)(SinglePallete)

@@ -1,9 +1,11 @@
 import React , {Component} from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
+import {withStyles} from '@material-ui/styles';
+import myStyles from './styles/PalleteStyles';
 import PalleteFooter from './PalleteFooter'
 
-import './Pallete.css'
+
 
 class Pallete extends Component {
 
@@ -50,8 +52,10 @@ class Pallete extends Component {
             />
         ));
 
+        let {classes} = this.props;
+
         return (
-            <div className={'pallete'}>
+            <div className={classes.pallete}>
 
                 {/*NavBar*/}
                 <Navbar
@@ -62,7 +66,7 @@ class Pallete extends Component {
                 />
 
 
-                <div className={'pallete__colors'}>
+                <div className={classes.palleteColors}>
                     {colorBoxes}
                 </div>
                 {/*Footer goes here*/}
@@ -73,4 +77,4 @@ class Pallete extends Component {
 
 }
 
-export default Pallete
+export default withStyles(myStyles)(Pallete)

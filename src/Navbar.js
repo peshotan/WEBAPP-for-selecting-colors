@@ -6,6 +6,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import {Link} from 'react-router-dom';
+import myStyles from './styles/NavbarStyles';
+import {withStyles} from '@material-ui/styles';
 
 
 import 'rc-slider/assets/index.css';
@@ -33,18 +35,21 @@ class Navbar extends Component {
     };
 
     render(){
+
+        let {classes} = this.props;
+
         return(
-            <header className={'navbar'}>
-                <div className={'navbar__logo'}>
+            <header className={classes.navbar}>
+                <div className={classes.navbarLogo}>
                     <Link exact={true} to={'/'}>reactColorPicker</Link>
                 </div>
 
-                {/*// LOGIC TO SHOW SLIDER*/}
+{/*=========== LOGIC TO SHOW SLIDER================*/}
                 {
                     this.props.displaySlider &&
-                    <div className={'navbar__slider__container'}>
+                    <div className={classes.navbarSliderContainer}>
                         <span>{`Level: ${this.props.level}`}</span>
-                        <div className={'navbar__slider'}>
+                        <div className={classes.navbarSlider}>
                             <Slider
                                 defaultValue={this.props.level}
                                 min={100}
@@ -55,7 +60,9 @@ class Navbar extends Component {
                     </div>
                 }
 
-                <div className={'navbar__select-container'} >
+{/* ==========CONTAINER FOR SELECTING STYLES============ */}
+
+                <div className={classes.navbarSelectContainer} >
                     <Select value={this.state.format} onChange={this.handleFormatChange} >
                         <MenuItem value={"hex"}> HEX = #ffffff </MenuItem>
                         <MenuItem value={"rgb"}> RGB = rgb(255,255,255) </MenuItem>
@@ -66,6 +73,7 @@ class Navbar extends Component {
                 {/*we have several options to put the CODE for snackbar, we can either put it in*/}
                 {/*Pallete component or the navbar. Here we have chosen the navbar component.*/}
 
+{/*=============SNACKBAR====================== */}
                 <Snackbar anchorOrigin={{vertical : "bottom", horizontal: "left"}}
                           key={'Snackbar'}
                           open={this.state.open}
@@ -89,4 +97,4 @@ class Navbar extends Component {
 
 }
 
-export default Navbar
+export default withStyles(myStyles)(Navbar)

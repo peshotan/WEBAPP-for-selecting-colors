@@ -2,44 +2,7 @@ import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MiniPallete from './MiniPallete';
 import {withStyles} from '@material-ui/styles';
-
-
-const myStyles = {
-    root : {
-        backgroundColor : "#35348f",
-        display: "flex",
-        height: "100vh",
-        alightItems : "flex-start",
-        justifyContent: "center"
-    },
-
-    container : {
-        width: "50%",
-        display: "flex",
-        alignItems : "flex-start",
-        flexDirection : "column",
-        flexWrap : "wrap"
-    },
-
-    nav : {
-        display: "flex",
-        width : "100%",
-        justifyContent: "space-between",
-        color: "white"
-    },
-
-    palletes: {
-        boxSizing: "border-box",
-        width : "100%",
-        display : "grid",
-        gridTemplateColumns : "repeat(3,30%)",
-        gridGap : "5%"
-    },
-
-    link : {
-        textDecoration: "none"
-    }
-}
+import myStyles from './styles/PalleteListStyles'
 
 
 class PalleteList extends Component {
