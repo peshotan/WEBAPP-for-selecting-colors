@@ -5,6 +5,7 @@ import {Route, Switch} from 'react-router-dom';
 import {generateNewPallete} from "./practiceColorHelpers";
 import PalleteList from './PalleteList';
 import SinglePallete from './SinglePallete';
+import NewPalleteForm from './NewPalleteForm';
 
 import './App.css';
 
@@ -63,6 +64,7 @@ class App extends React.Component{
           <div className={"App"}>
               <Switch>
                   {/* For the HomePage Route we are passing the each individual pallete fromt he SeedColors */}
+                  <Route exact path={'/pallete/new'} render={ () => <NewPalleteForm/>} />
                   <Route exact path={'/'} render={(renderProps)=> <PalleteList {...renderProps} palletes={SeedColors} />}/>
                   <Route exact path={'/pallete/:id'} render={
                       (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}/>

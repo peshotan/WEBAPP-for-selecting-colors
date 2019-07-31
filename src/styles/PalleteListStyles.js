@@ -12,14 +12,20 @@ export default {
         display: "flex",
         alignItems : "flex-start",
         flexDirection : "column",
-        flexWrap : "wrap"
+        flexWrap : "wrap",
     },
 
     nav : {
         display: "flex",
         width : "100%",
         justifyContent: "space-between",
-        color: "white"
+        color: "white",
+        alignItems: "center",
+        margin : "2 rem",
+
+        "& a" : {
+            color:"white"
+        }
     },
 
     palletes: {
@@ -28,9 +34,5 @@ export default {
         display : "grid",
         gridTemplateColumns : "repeat(3,30%)",
         gridGap : "5%"
-    },
-
-    link : {
-        textDecoration: "none"
     }
 }

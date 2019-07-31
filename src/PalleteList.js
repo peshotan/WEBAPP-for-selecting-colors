@@ -30,6 +30,10 @@ class PalleteList extends Component {
                 <div className={classes.container}>
                     <nav className={classes.nav}>
                         <h1>React Colors</h1>
+                        <Link className={classes.link}
+                              exact to={'/pallete/new'}>
+                            New Form
+                        </Link>
                     </nav>
                     <div className={classes.palletes}>
                         {miniPalletes}
