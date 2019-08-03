@@ -19,11 +19,11 @@ class PalleteList extends Component {
         // all the key-values from myStyles are set as class names in classes OBJECT -property
         let {palletes, classes} = this.props;
 
-        let miniPalletes = palletes.map(pallete => (
-                <div className={classes.link} >
+        let miniPalletes = palletes.map((pallete,idx) => (
+                <div key={idx} className={classes.link} >
                     <MiniPallete handleRoute={()=> this.handlePalleteLink(pallete.id)} {...pallete}/>
                 </div>
-        ))
+        ));
 
         return (
             <div className={classes.root}>

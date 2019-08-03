@@ -10,8 +10,12 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { ChromePicker } from 'react-color';
+import Button from '@material-ui/core/Button';
+import DraggleColorBox from './DraggleColorBox';
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
-const drawerWidth = 240;
+const drawerWidth = 360;
 
 const styles = theme => ({
     root: {
@@ -54,7 +58,8 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
+        height: "calc(100vh - 64px)",
+        padding: 0,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -68,12 +73,35 @@ const styles = theme => ({
         }),
         marginLeft: 0,
     },
+    buttonDiv : {
+        display : "flex",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        height: "4rem"
+    }
 });
 
 class NewPalleteForm extends Component {
-    state = {
-        open: false,
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            open: true,
+            newName : "",
+            currentColor : "#000",
+            colorPallete : [{name : "blue",color :"#fff"}]
+        };
+    }
+
+    // Component did Mount doesn't require binding
+    componentDidMount() {
+        ValidatorForm.addValidationRule("isColorUnique", (value) => {
+            return this.state.colorPallete.every(color => color.color !== this.state.currentColor)
+        });
+
+        ValidatorForm.addValidationRule("isColorNameUnique", (value) => {
+            return this.state.colorPallete.every(color => color.name.toLowerCase() !== value.toLowerCase())
+        })
+    }
 
     handleDrawerOpen = () => {
         this.setState({ open: true });
@@ -83,9 +111,22 @@ class NewPalleteForm extends Component {
         this.setState({ open: false });
     };
 
+    handleColorChange = (color) => {
+        this.setState({currentColor: color.hex})
+    };
+
+    handleSubmitColor = (e) => {
+        let newColorObject = {name : this.state.newName, color: this.state.currentColor};
+        this.setState({colorPallete : [...this.state.colorPallete, newColorObject] , newName : ""})
+    };
+
+    handleFormValidation = (e) => {
+        this.setState({newName : e.target.value})
+    };
+
     render() {
         const { classes} = this.props;
-        const { open } = this.state;
+        const { open, newName , currentColor, colorPallete } = this.state;
 
         return (
             <div className={classes.root}>
@@ -124,7 +165,53 @@ class NewPalleteForm extends Component {
                            <ChevronLeftIcon />
                         </IconButton>
                     </div>
+
                     <Divider />
+
+                    <Typography variant={'h4'} color={"inherit"}>
+                        Please select your Color!
+                    </Typography>
+
+                    <div className={classes.buttonDiv}>
+                        <Button variant="contained" color="secondary" className={classes.button}>
+                            Clear Pallete
+                        </Button>
+                        <Button variant="contained" color="primary" className={classes.button}>
+                            Random Color!
+                        </Button>
+                    </div>
+
+                    <ChromePicker
+                        color = {currentColor}
+                        onChangeComplete = {this.handleColorChange}
+
+                    />
+
+                    <ValidatorForm
+                        onSubmit={this.handleSubmitColor}
+                        instantValidate = {false}
+                    >
+                        <TextValidator
+                            value = {newName}
+                            onChange = {this.handleFormValidation}
+                            validators = {["required","isColorUnique","isColorNameUnique"]}
+                            errorMessages = {["This field is required","Please select a unique color","Color name must be unique"]}
+                        />
+
+                        <Button variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                style={{backgroundColor: currentColor}}
+                                type={'submit'}
+                        >
+                            Save Pallete
+                        </Button>
+
+                    </ValidatorForm>
+
+
+
+
 
                 </Drawer>
                 <main
@@ -133,6 +220,8 @@ class NewPalleteForm extends Component {
                     })}
                 >
                     <div className={classes.drawerHeader} />
+
+                    {colorPallete.map(color=> (<DraggleColorBox color={color} />))}
 
                 </main>
             </div>
