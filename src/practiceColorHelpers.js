@@ -35,7 +35,8 @@ let generateNewPallete = (oldPalette) => {
         // we will need the 10 different shades of the color
         let scale = getScale(color.color, 10).reverse();
 
-
+        // generating all the shades for a particular level in an ARRAY data-structure and then assigning it
+        // to a particular level
         for (let i in scale){
             newPalette.colors[levels[i]].push(
                 {

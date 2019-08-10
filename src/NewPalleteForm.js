@@ -15,7 +15,7 @@ import Button from '@material-ui/core/Button';
 import DraggleColorBox from './DraggleColorBox';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
-const drawerWidth = 360;
+const drawerWidth = 400;
 
 const styles = theme => ({
     root: {
@@ -86,20 +86,25 @@ class NewPalleteForm extends Component {
         super(props);
         this.state = {
             open: true,
+            newPalleteName: "",
             newName : "",
-            currentColor : "#000",
-            colorPallete : [{name : "blue",color :"#fff"}]
+            currentColor : "",
+            colors : []
         };
     }
 
     // Component did Mount doesn't require binding
     componentDidMount() {
         ValidatorForm.addValidationRule("isColorUnique", (value) => {
-            return this.state.colorPallete.every(color => color.color !== this.state.currentColor)
+            return this.state.colors.every(color => color.color !== this.state.currentColor)
         });
 
         ValidatorForm.addValidationRule("isColorNameUnique", (value) => {
-            return this.state.colorPallete.every(color => color.name.toLowerCase() !== value.toLowerCase())
+            return this.state.colors.every(color => color.name.toLowerCase() !== value.toLowerCase())
+        });
+
+        ValidatorForm.addValidationRule("isPalleteNameUnique", (value) => {
+            return this.props.palletes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
         })
     }
 
@@ -117,22 +122,40 @@ class NewPalleteForm extends Component {
 
     handleSubmitColor = (e) => {
         let newColorObject = {name : this.state.newName, color: this.state.currentColor};
-        this.setState({colorPallete : [...this.state.colorPallete, newColorObject] , newName : ""})
+        this.setState({colors : [...this.state.colors, newColorObject] , newName : ""})
     };
 
     handleFormValidation = (e) => {
-        this.setState({newName : e.target.value})
+        this.setState({[e.target.name] : e.target.value})
+    };
+
+    savePallete = () => {
+        // we are creating a new pallete OBJECT and then adding it do the MAIN array through APP.JS
+        let newPallete = {
+            paletteName : this.state.newPalleteName,
+            id: this.state.newPalleteName.toLowerCase().replace(/ /g, "-"),
+            emoji: "Asia",
+            colors : this.state.colors
+        };
+        this.props.savePallete(newPallete);
+        this.props.history.push('/')
+    };
+
+    handleDeleteIcon = (colorName) =>{
+        this.setState(
+            (curState)=> ({colors : curState.colors.filter((color) => color.name !== colorName )})
+        )
     };
 
     render() {
         const { classes} = this.props;
-        const { open, newName , currentColor, colorPallete } = this.state;
-
+        const { open, newName , currentColor, colors, newPalleteName } = this.state;
         return (
             <div className={classes.root}>
                 <CssBaseline />
                 <AppBar
                     position="fixed"
+                    color="default"
                     className={classNames(classes.appBar, {
                         [classes.appBarShift]: open,
                     })}
@@ -149,6 +172,36 @@ class NewPalleteForm extends Component {
                         <Typography variant="h6" color="inherit" noWrap>
                             Persistent drawer
                         </Typography>
+
+                        <div className={classes.buttonDiv}>
+
+                        </div>
+
+
+                        <ValidatorForm
+                            onSubmit={this.savePallete}
+                            instantValidate = {false}
+                        >
+                            <TextValidator
+                                name={'newPalleteName'}
+                                value = {newPalleteName}
+                                onChange = {this.handleFormValidation}
+                                validators = {["required", "isPalleteNameUnique"]}
+                                errorMessages = {["This field is required", "please enter a unique name"]}
+                            />
+
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                type={'submit'}
+                            >
+                                SAVE PALETTE
+                            </Button>
+
+
+                        </ValidatorForm>
+
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -192,6 +245,7 @@ class NewPalleteForm extends Component {
                         instantValidate = {false}
                     >
                         <TextValidator
+                            name={'newName'}
                             value = {newName}
                             onChange = {this.handleFormValidation}
                             validators = {["required","isColorUnique","isColorNameUnique"]}
@@ -204,24 +258,23 @@ class NewPalleteForm extends Component {
                                 style={{backgroundColor: currentColor}}
                                 type={'submit'}
                         >
-                            Save Pallete
+                            Add Color
                         </Button>
 
                     </ValidatorForm>
-
-
-
-
-
                 </Drawer>
                 <main
+                    // the following syntax uses a prop called classNames
                     className={classNames(classes.content, {
                         [classes.contentShift]: open,
                     })}
                 >
                     <div className={classes.drawerHeader} />
 
-                    {colorPallete.map(color=> (<DraggleColorBox color={color} />))}
+                    {colors.map(color=> (<DraggleColorBox
+                        key={color.name}
+                        color={color}
+                        handleDeleteIcon={this.handleDeleteIcon} />))}
 
                 </main>
             </div>

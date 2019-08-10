@@ -18,6 +18,7 @@ function MiniPallete(props){
 
     return(
         // DON'T use this.props just use props because this is function NOT a class
+        // HERE WE USE the correct spelling for Pallete which is PALETTE
 
         <div onClick={props.handleRoute} className={classes.root}>
             <div className={classes.colors}>

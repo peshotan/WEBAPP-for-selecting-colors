@@ -39,7 +39,6 @@ class PalleteList extends Component {
                         {miniPalletes}
                     </div>
                 </div>
-
             </div>
         )
     }

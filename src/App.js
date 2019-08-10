@@ -11,6 +11,13 @@ import './App.css';
 
 class App extends React.Component{
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            palletes : SeedColors
+        }
+    }
+
 
    // APP.JS is the parent component of Pallete.JS and PalleteList.JS
     // the following function returns a ENHANCED Pallete Component(with all levels) with all the necessary props passed in
@@ -19,7 +26,7 @@ class App extends React.Component{
        try {
            console.log(id);
            // this is without the levels
-           let correctOriginalPallete = SeedColors.find((pallete) => pallete.id === id);
+           let correctOriginalPallete = this.state.palletes.find((pallete) => pallete.id === id);
 
            console.log("generated Pallete with all levels",generateNewPallete(correctOriginalPallete));
 
@@ -38,7 +45,7 @@ class App extends React.Component{
        try {
            console.log(palleteId);
            // this is without the levels
-           let correctOriginalPallete = SeedColors.find((pallete) => pallete.id === palleteId);
+           let correctOriginalPallete = this.state.palletes.find((pallete) => pallete.id === palleteId);
 
 
            // this is with the levels
@@ -48,7 +55,11 @@ class App extends React.Component{
            return <h1>ERROR!</h1>
        }
 
-   }
+   };
+
+   saveNewPallete = (newPallete) => {
+       this.setState({palletes : [...this.state.palletes, newPallete]}, ()=> console.log(this.state.palletes))
+   };
 
 
 
@@ -64,10 +75,29 @@ class App extends React.Component{
           <div className={"App"}>
               <Switch>
                   {/* For the HomePage Route we are passing the each individual pallete fromt he SeedColors */}
-                  <Route exact path={'/pallete/new'} render={ () => <NewPalleteForm/>} />
-                  <Route exact path={'/'} render={(renderProps)=> <PalleteList {...renderProps} palletes={SeedColors} />}/>
-                  <Route exact path={'/pallete/:id'} render={
-                      (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}/>
+                  <Route
+                      exact
+                      path={'/pallete/new'}
+                      render={
+                          (renderProps) =>
+                              <NewPalleteForm
+                                  {...renderProps}
+                                  palletes={this.state.palletes}
+                                  savePallete={this.saveNewPallete}
+                              />
+                      }
+                  />
+                  <Route
+                      exact
+                      path={'/'}
+                      render={(renderProps)=> <PalleteList {...renderProps} palletes={this.state.palletes} />}
+                  />
+                  <Route
+                      exact
+                      path={'/pallete/:id'}
+                      render={
+                      (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}
+                  />
                   <Route exact
                          path={'/pallete/:palleteId/:colorId'}
                          render={
