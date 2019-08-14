@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import PalleteMetaForm from './PalleteMetaForm';
 
 const drawerWidth = 400;
 
@@ -25,6 +26,7 @@ const styles = (theme) => ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems : "center",
         height: "64px"
     },
     appBarShift: {
@@ -40,7 +42,16 @@ const styles = (theme) => ({
         marginRight: 20,
     },
     navBtns : {
-
+        marginRight : "1rem"
+    },
+    button : {
+        margin: "0 0.5rem",
+        "& a": {
+            textDecoration : "none !important"
+        }
+    },
+    link : {
+        textDecoration: "none"
     }
 });
 
@@ -49,19 +60,18 @@ class PalleteFormNav extends Component {
         super(props);
         this.state = {
             newPalleteName : "",
+            formShowing : false
         }
     }
 
-    componentDidMount(){
-        ValidatorForm.addValidationRule("isPalleteNameUnique", (value) => {
-            return this.props.palletes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
-        })
-    }
 
-    handleFormValidation = (e) => {
-        this.setState({[e.target.name] : e.target.value})
+    showForm = () => {
+        this.setState({formShowing : true})
     };
 
+    hideForm = () => {
+        this.setState({formShowing : false})
+    }
 
     render(){
         let {open, classes} = this.props;
@@ -93,39 +103,44 @@ class PalleteFormNav extends Component {
                     </Toolbar>
 
                     <div className={classes.navBtns}>
-                        <ValidatorForm
-                            onSubmit={()=> this.props.savePallete(newPalleteName)}
-                            instantValidate = {false}
+
+
+                        <Link
+                            exact to={'/'}
+                            className = {classes.link}
                         >
-                            <TextValidator
-                                name={'newPalleteName'}
-                                value = {newPalleteName}
-                                onChange = {this.handleFormValidation}
-                                validators = {["required", "isPalleteNameUnique"]}
-                                errorMessages = {["This field is required", "please enter a unique name"]}
-                            />
-
-
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                className={classes.button}
-                                type={'submit'}
-                            >
-                                SAVE PALETTE
-                            </Button>
-
-                        </ValidatorForm>
-
-                        <Link exact to={'/'}>
                             <Button
                                 variant="contained"
                                 color="secondary"
+                                className = {classes.button}
                             >
                                 Go Back
                             </Button>
                         </Link>
+
+                        <Button
+                            className = {classes.button}
+                            variant="contained"
+                            color="primary"
+                            onClick={this.showForm}
+                        >
+                            Open form dialog
+                        </Button>
+
+
                     </div>
+
+                    {this.state.formShowing
+                            &&
+                    <PalleteMetaForm
+                        hideForm = {this.hideForm}
+                        palletes = {this.props.palletes}
+                        classes = {classes}
+                        savePallete = { this.props.savePallete }
+                    />
+                    }
+
+
                 </AppBar>
             </div>
         )
