@@ -11,69 +11,8 @@ import DraggableColorList from './DraggableColorList';
 import {arrayMove} from 'react-sortable-hoc';
 import PalleteFormNav from './PalleteFormNav';
 import ColorPickerForm from './ColorPickerForm';
+import styles from './styles/NewPalleteFormStyles';
 
-const drawerWidth = 400;
-
-const styles = theme => ({
-    root: {
-        display: 'flex',
-    },
-
-    hide: {
-        display: 'none',
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-        display: "flex",
-        alignItems : "center"
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-    },
-    content: {
-        flexGrow: 1,
-        height: "calc(100vh - 64px)",
-        padding: 0,
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginLeft: -drawerWidth,
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginLeft: 0,
-    },
-    buttons : {
-        width : "100%",
-        display : "flex",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-        height: "4rem"
-    },
-    container : {
-        width: "90%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center !important",
-        alignItems: "center !important",
-        height: "100%"
-    },
-    button:{
-        width : "50%"
-    }
-});
 
 class NewPalleteForm extends Component {
     static defaultProps = {
@@ -106,15 +45,15 @@ class NewPalleteForm extends Component {
     };
 
 
-    savePallete = (newPalleteName) => {
+    savePallete = (newPallete) => {
         // we are creating a new pallete OBJECT and then adding it do the MAIN array through APP.JS
-        let newPallete = {
-            paletteName : newPalleteName,
-            id: newPalleteName.toLowerCase().replace(/ /g, "-"),
-            emoji: "Asia",
+        let pallete = {
+            paletteName : newPallete.palleteName,
+            id: newPallete.palleteName.toLowerCase().replace(/ /g, "-"),
+            emoji: newPallete.emoji,
             colors : this.state.colors
         };
-        this.props.savePallete(newPallete);
+        this.props.savePallete(pallete);
         this.props.history.push('/')
     };
 

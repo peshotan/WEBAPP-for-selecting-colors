@@ -1,3 +1,5 @@
+import Sizes from './Sizes';
+
 export default {
     navbarSlider : {
         width: "340px",
@@ -48,7 +50,11 @@ export default {
             height: "13px",
             width: "13px",
             marginTop: "-3px "
-        }
+        },
+
+     [Sizes.down('md')] : {
+        width : "150px"
+     }
     },
 
     navbar : {
@@ -72,6 +78,9 @@ export default {
             textDecoration: "none",
             color: "#000",
             fontFamily: "Roboto"
+        },
+        [Sizes.down("xs")] : {
+            display : "none"
         }
     },
 

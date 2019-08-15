@@ -14,7 +14,7 @@ class FormDialog extends Component {
     constructor(props){
         super(props);
         this.state = {
-            open : true,
+            stage : "form",
             newPalleteName : "",
         }
     }
@@ -31,25 +31,47 @@ class FormDialog extends Component {
         this.setState({[e.target.name] : e.target.value})
     };
 
+    showEmoji = () => {
+        this.setState({stage : "emoji"})
+    };
+
+    addEmojiAndName = (emoji) => {
+        const newPallete = {
+            palleteName : this.state.newPalleteName,
+            emoji : emoji.native
+        };
+        this.props.savePallete(newPallete)
+    };
+
     render () {
-        let { open, newPalleteName } = this.state;
+        let { stage, newPalleteName } = this.state;
         let { classes , hideForm } = this.props;
         return (
+            <div>
                 <Dialog
-                    open={open}
-                    onClose={this.hideForm}
+                    open={stage === "emoji"}
+                    onClose={hideForm}
+                >
+                    <DialogTitle id="form-dialog-title">Choose a Palette Emoji</DialogTitle>
+                    <Picker
+                        onSelect={this.addEmojiAndName}
+                        title='Pick your emoji…' emoji='point_up'
+                    />
+                </Dialog>
+                <Dialog
+                    open={stage === "form"}
+                    onClose={hideForm}
                     aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
                     <ValidatorForm
-                        onSubmit={ () => this.props.savePallete(newPalleteName)}
+                        // onSubmit={ () => this.props.savePallete(newPalleteName)}
+                        onSubmit = {this.showEmoji}
                         instantValidate = {false}
                     >
                         <DialogContent>
                             <DialogContentText>
                                 Please select a unique palette name for your color palette!
                             </DialogContentText>
-
-                            <Picker/>
 
                                 <TextValidator
                                     label={'Palette Name'}
@@ -79,6 +101,7 @@ class FormDialog extends Component {
                         </DialogActions>
                     </ValidatorForm>
                 </Dialog>
+            </div>
         );
     }
 }

@@ -13,8 +13,9 @@ class App extends React.Component{
 
     constructor(props) {
         super(props);
+        const savedPalletes = JSON.parse(window.localStorage.getItem("palletes"));
         this.state = {
-            palletes : SeedColors
+            palletes : savedPalletes || SeedColors
         }
     }
 
@@ -58,10 +59,24 @@ class App extends React.Component{
    };
 
    saveNewPallete = (newPallete) => {
-       this.setState({palletes : [...this.state.palletes, newPallete]}, ()=> console.log(this.state.palletes))
+       this.setState(
+           {palletes : [...this.state.palletes, newPallete]},
+           this.syncLocalStorage
+       )
    };
 
+   syncLocalStorage = () => {
+       window.localStorage.setItem(
+           "palletes",
+           JSON.stringify(this.state.palletes))
+   };
 
+   deletePallete = (palleteId) => {
+        this.setState(
+            {palletes : this.state.palletes.filter(eachPallete => eachPallete.id !== palleteId) },
+            this.syncLocalStorage
+            )
+   };
 
   render() {
 
@@ -90,7 +105,14 @@ class App extends React.Component{
                   <Route
                       exact
                       path={'/'}
-                      render={(renderProps)=> <PalleteList {...renderProps} palletes={this.state.palletes} />}
+                      render={
+                          (renderProps)=>
+                              <PalleteList
+                                  {...renderProps}
+                                  deletePallete={this.deletePallete}
+                                  palletes={this.state.palletes}
+                              />
+                      }
                   />
                   <Route
                       exact

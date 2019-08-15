@@ -2,7 +2,8 @@ import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MiniPallete from './MiniPallete';
 import {withStyles} from '@material-ui/styles';
-import myStyles from './styles/PalleteListStyles'
+import myStyles from './styles/PalleteListStyles';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 
 class PalleteList extends Component {
@@ -19,10 +20,15 @@ class PalleteList extends Component {
         // all the key-values from myStyles are set as class names in classes OBJECT -property
         let {palletes, classes} = this.props;
 
-        let miniPalletes = palletes.map((pallete,idx) => (
-                <div key={idx} className={classes.link} >
-                    <MiniPallete handleRoute={()=> this.handlePalleteLink(pallete.id)} {...pallete}/>
-                </div>
+        let miniPalletes = palletes.map((pallete) => (
+            <CSSTransition key={pallete.id} classNames='fade' timeout={500}>
+                    <MiniPallete
+                        handleRoute={()=> this.handlePalleteLink(pallete.id)}
+                        {...pallete}
+                        deletePallete = {this.props.deletePallete}
+                        key = {pallete.id}
+                    />
+            </CSSTransition>
         ));
 
         return (
@@ -35,9 +41,9 @@ class PalleteList extends Component {
                             New Form
                         </Link>
                     </nav>
-                    <div className={classes.palletes}>
+                    <TransitionGroup className={classes.palletes}>
                         {miniPalletes}
-                    </div>
+                    </TransitionGroup>
                 </div>
             </div>
         )

@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import Sizes from './Sizes';
 
 export default {
 
@@ -53,7 +54,20 @@ export default {
 
         "&:hover button": {
             opacity: 1
+        },
+        [Sizes.down("lg")] : {
+            width : "25%",
+            height: props => props.showFullPallete ? "20%" : "33.333%"
+        },
+        [Sizes.down("md")] : {
+            width : "50%",
+            height: props => props.showFullPallete ? "10%" : "20%"
+        },
+        [Sizes.down("xs")] : {
+            width : "100%",
+            height: props => props.showFullPallete ? "5%" : "10%"
         }
+
     },
 
     boxContent: {
