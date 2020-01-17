@@ -6,6 +6,9 @@ import {generateNewPallete} from "./practiceColorHelpers";
 import PalleteList from './PalleteList';
 import SinglePallete from './SinglePallete';
 import NewPalleteForm from './NewPalleteForm';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Page from './Page';
+import './Page.css';
 
 import './App.css';
 
@@ -88,47 +91,66 @@ class App extends React.Component{
 
       return (
           <div className={"App"}>
-              <Switch>
-                  {/* For the HomePage Route we are passing the each individual pallete fromt he SeedColors */}
-                  <Route
-                      exact
-                      path={'/pallete/new'}
-                      render={
-                          (renderProps) =>
-                              <NewPalleteForm
-                                  {...renderProps}
-                                  palletes={this.state.palletes}
-                                  savePallete={this.saveNewPallete}
-                              />
-                      }
-                  />
-                  <Route
-                      exact
-                      path={'/'}
-                      render={
-                          (renderProps)=>
-                              <PalleteList
-                                  {...renderProps}
-                                  deletePallete={this.deletePallete}
-                                  palletes={this.state.palletes}
-                              />
-                      }
-                  />
-                  <Route
-                      exact
-                      path={'/pallete/:id'}
-                      render={
-                      (renderProps)=> this.correctGeneratedPallete(renderProps.match.params.id)}
-                  />
-                  <Route exact
-                         path={'/pallete/:palleteId/:colorId'}
-                         render={
-                             (renderProps)=>
-                                 this.generatePalleteForSinglePallete(renderProps.match.params.palleteId, renderProps)
-                         }
-                  />
-                  <Route render={()=> <h1>ERROR!</h1>}/>
-              </Switch>
+              <Route render={({location}) =>
+                  <TransitionGroup>
+                      <CSSTransition key={location.key} classNames={'fade'} timeout={500}>
+                          <Switch location={location}>
+                          {/* For the HomePage Route we are passing the each individual pallete fromt he SeedColors */}
+                          <Route
+                              exact
+                              path={'/pallete/new'}
+                              render={
+                                  (renderProps) =>
+                                      <Page>
+                                          <NewPalleteForm
+                                              {...renderProps}
+                                              palletes={this.state.palletes}
+                                              savePallete={this.saveNewPallete}
+                                          />
+                                      </Page>
+                              }
+                          />
+                          <Route
+                              exact
+                              path={'/'}
+                              render={
+                                  (renderProps)=>
+                                      <Page>
+                                          <PalleteList
+                                              {...renderProps}
+                                              deletePallete={this.deletePallete}
+                                              palletes={this.state.palletes}
+                                          />
+                                      </Page>
+                              }
+                          />
+                          <Route
+                              exact
+                              path={'/pallete/:id'}
+                              render={
+                                  (renderProps)=>
+                                      <Page>
+                                          {this.correctGeneratedPallete(renderProps.match.params.id)}
+                                      </Page>
+                              }
+                          />
+                          <Route exact
+                                 path={'/pallete/:palleteId/:colorId'}
+                                 render={
+                                     (renderProps)=>
+                                         <Page>
+                                             {this.generatePalleteForSinglePallete(renderProps.match.params.palleteId, renderProps)}
+                                         </Page>
+                                             }
+                          />
+                          <Route render={()=> <h1>ERROR!</h1>}/>
+                      </Switch>
+                  </CSSTransition>
+              </TransitionGroup>
+
+
+              } />
+
           </div>
       )
   }

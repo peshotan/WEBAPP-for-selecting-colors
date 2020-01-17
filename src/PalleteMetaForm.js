@@ -7,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
-import 'emoji-mart/css/emoji-mart.css'
+import 'emoji-mart/css/emoji-mart.css';
 
 class FormDialog extends Component {
 
@@ -41,6 +41,8 @@ class FormDialog extends Component {
             emoji : emoji.native
         };
         this.props.savePallete(newPallete)
+        this.setState({stage : ""})
+
     };
 
     render () {

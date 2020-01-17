@@ -34,7 +34,7 @@ export default {
         flexDirection: "column",
         flexWrap: "wrap",
 
-        [Sizes.down("xl")] : {
+        [Sizes.down("lg")] : {
             width : "80%"
         },
         [Sizes.down("xs")] : {

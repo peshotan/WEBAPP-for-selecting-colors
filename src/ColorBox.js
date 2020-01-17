@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {withStyles} from '@material-ui/styles';
 import chroma from 'chroma-js';
 import myStyles from './styles/ColorBoxStyles';
+import classNames from 'classnames';
 import './ColorBox.css';
 
 class ColorBox extends Component {
@@ -42,8 +43,8 @@ class ColorBox extends Component {
                     {/*The div below is the one that EXPANDS */}
 
                     <div style={{background : color}}
-                         className={
-                             `${classes.copyOverlay} ${this.state.isCoping && classes.expanded}`}>
+                         className={classNames(classes.copyOverlay, {[classes.expanded]: this.state.isCoping})}
+                    >
                     </div>
 
                     <div className={`${classes.copyMsg} ${this.state.isCoping && classes.show}`}>

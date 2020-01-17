@@ -10,11 +10,15 @@ class MiniPallete extends React.Component{
 
     deleteMiniPallete = (evt) => {
         evt.stopPropagation();
-        this.props.deletePallete(this.props.id);
+        this.props.openDialog(this.props.id);
+    };
+
+    handleClick2 = (id) => {
+        this.props.handleRoute(this.props.id)
     };
 
     render() {
-        let {classes, paletteName, colors, emoji} = this.props;
+        let {classes, paletteName, colors, emoji, id} = this.props;
         const miniColorBoxes = colors.map((color, idx) => (
             <div className={classes.miniColor}
                  style={{backgroundColor: color.color}}
@@ -26,7 +30,7 @@ class MiniPallete extends React.Component{
             // DON'T use this.props just use props because this is function NOT a class
             // HERE WE USE the correct spelling for Pallete which is PALETTE
 
-            <div onClick={this.props.handleRoute} className={classes.root}>
+            <div onClick={this.handleClick2} className={classes.root}>
                 <DeleteIcon
                     className={classes.deleteIcon}
                     style={{transition: "all 0.4s ease"}}

@@ -1,4 +1,5 @@
 import Sizes from './Sizes';
+import chroma from "chroma-js";
 
 const styles = {
     root : {
@@ -44,6 +45,7 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         lineHeight: "12px",
+        color: (props) => chroma(props.color.color).luminance() < 0.4 ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.6)",
 
         "& span": {
             verticalAlign: "middle"

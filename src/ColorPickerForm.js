@@ -35,6 +35,13 @@ class ColorPickerForm extends Component{
         this.setState({[e.target.name] : e.target.value})
     };
 
+    // clearNameAndColor = () => {
+    //     this.setState({
+    //         currentColor : "",
+    //         currentColorName : ""
+    //     })
+    // }
+
 
     render(){
         const { currentColor, currentColorName } = this.state;

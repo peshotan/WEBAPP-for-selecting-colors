@@ -12,6 +12,7 @@ import {arrayMove} from 'react-sortable-hoc';
 import PalleteFormNav from './PalleteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import styles from './styles/NewPalleteFormStyles';
+import SeedColors from './seedColors'
 
 
 class NewPalleteForm extends Component {
@@ -23,7 +24,7 @@ class NewPalleteForm extends Component {
         super(props);
         this.state = {
             open : true,
-            colors : this.props.palletes[0].colors
+            colors : SeedColors[0].colors
         };
     }
 
@@ -63,6 +64,7 @@ class NewPalleteForm extends Component {
         )
     };
 
+    //======= This method is for the draggable color box sorting =========
     onSortEnd = (arg) => {
         this.setState(curState => ({colors : arrayMove(curState.colors ,arg.oldIndex, arg.newIndex)}))
     };
@@ -74,9 +76,13 @@ class NewPalleteForm extends Component {
     addRandomColor = (arg) => {
         const allColors = this.props.palletes.map(pallete => pallete.colors).flat();
         // now lets get a random color from this array
+        let randomColor = allColors[Math.floor(Math.random()*allColors.length)];
+        let isDuplicate = true;
+        while (isDuplicate) {
+            randomColor = allColors[Math.floor(Math.random()*allColors.length)]
+            isDuplicate = this.state.colors.some(color => color === randomColor)
+        }
 
-        let randomColor = allColors[Math.floor(Math.random()*allColors.length)]
-        console.log(randomColor)
         this.setState({colors : [...this.state.colors, randomColor]})
     };
 
@@ -154,6 +160,7 @@ class NewPalleteForm extends Component {
                     <div className={classes.drawerHeader} />
 
                     <DraggableColorList
+                        distance={20}
                         handleDeleteIcon={this.handleDeleteIcon}
                         colors={colors}
                         axis='xy'
